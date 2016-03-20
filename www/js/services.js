@@ -2,8 +2,7 @@ angular.module('AJTodos.services', [])
 
 .factory('Todos', function() {
   try {
-    var items = angular.fromJson(localStorage.getItem('todos')) || [];
-    todos = items;
+    var todos = angular.fromJson(localStorage.getItem('todos')) || [];
   } catch (e) {
     var todos = [];
   }

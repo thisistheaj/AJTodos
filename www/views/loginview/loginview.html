@@ -1,0 +1,18 @@
+<ion-view view-title="AJTodos">
+  <ion-content>
+    <ion-list>
+      <ion-input class="item item-input">
+        <span class="input-label">Username:</span>
+        <input type="text" ng-model="userName" placeholder="Username">
+      </ion-input>
+      <ion-input class="item item-input">
+        <span class="input-label">Password:</span>
+        <input type="password" ng-model="password" placeholder="Username">
+      </ion-input>
+      <button class="button button-block button-balanced" ng-click="login(userName,password)">
+        Login
+      </button>
+      <p class="assertive">{{wrongPw}}</p>
+    </ion-list>
+  </ion-content>
+</ion-view>

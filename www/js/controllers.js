@@ -41,12 +41,38 @@ angular.module('AJTodos.controllers', [])
 
   .controller('DetailController', function($scope,Todos,$stateParams,$state) {
     $scope.todo = $stateParams.todo;
-    //angular.forEach(Todos, function (todo) {
-    //  if (todo === $stateParams.todo) {
-    //    $scope.todo = todo;
-    //  }
-    //});
-    //if (angular.isUndefined($scope.currency.ticker)) {
-    //  $state.go('listview');
-    //}
+  })
+
+  .controller('LoginViewController', function($scope,$state,$http) {
+    $scope.userName = "";
+    $scope.password = "";
+    $scope.wrongPw = "";
+
+    $scope.login = function (un, pw) {
+      $http({
+        method: 'GET',
+        url: 'http://localhost:3000/userName/' + un
+      }).then(function successCallback(response) {
+        if (response.data.length > 0) {
+          if (response.data[0].password === pw){
+            $state.go('listview');
+          } else {
+            $scope.wrongPw = "Wrong Password, try again";
+          }
+        } else {
+          $http({
+            method: 'POST',
+            url: 'http://localhost:3000',
+            //todo: add props for adding
+          }).then(function successCallback(response) {
+            $state.go('listview');
+          }, function errorCallback(response) {
+          });
+        }
+
+      }, function errorCallback(response) {
+
+      });
+    }
+
   });

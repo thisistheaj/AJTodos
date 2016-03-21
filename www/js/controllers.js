@@ -26,7 +26,7 @@ angular.module('AJTodos.controllers', [])
         alert("Error: no connection, not synced");
       });
     }, true);
-    
+
     $scope.remove = function(todo){
       $scope.data.data.splice($scope.data.data.indexOf(todo), 1);
     };
@@ -46,9 +46,11 @@ angular.module('AJTodos.controllers', [])
         scope: $scope,
 
         buttons: [
-          { text: 'Cancel' }, {
+          { text: 'Cancel',
+            type: 'button-outline button-balanced'
+          }, {
             text: '<b>Add</b>',
-            type: 'button-positive',
+            type: 'button-royal',
             onTap: function(e) {
               if (!$scope.temp.model) {
                 e.preventDefault();
@@ -61,10 +63,6 @@ angular.module('AJTodos.controllers', [])
       });
     };
 
-  })
-
-  .controller('DetailController', function($scope,$stateParams,$state) {
-    $scope.todo = $stateParams.todo;
   })
 
   .controller('LoginViewController', function($scope,$state,$http) {

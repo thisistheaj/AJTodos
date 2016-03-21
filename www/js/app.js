@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('AJTodos', ['ionic', 'AJTodos.controllers', 'AJTodos.services'])
+angular.module('AJTodos', ['ionic', 'AJTodos.controllers'])
 
   .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -23,7 +23,8 @@ angular.module('AJTodos', ['ionic', 'AJTodos.controllers', 'AJTodos.services'])
     });
   })
 
-  .config(function($stateProvider, $urlRouterProvider) {
+  .config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+    $ionicConfigProvider.backButton.previousTitleText(false).text('');
     $stateProvider
 
       .state('loginview', {
@@ -36,12 +37,6 @@ angular.module('AJTodos', ['ionic', 'AJTodos.controllers', 'AJTodos.services'])
         url: '/listview/:userName',
         controller: 'ListViewController',
         templateUrl: 'views/listview/listview.html',
-      })
-
-      .state('detail', {
-        url: '/detail/:todo',
-        templateUrl: 'views/detail/detail.html',
-        controller: 'DetailController'
       });
 
     $urlRouterProvider.otherwise('/loginview');

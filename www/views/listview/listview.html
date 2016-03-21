@@ -1,18 +1,28 @@
-<ion-view view-title="To-do List">
+<ion-view view-title="{{userName}}'s To-dos">
   <ion-nav-buttons side="right">
     <button class="button-clear" ng-click="showPopup()">
-      <i class="icon positive ion-android-add"></i>
+      <i class="icon balanced ion-android-add"></i>
     </button>
   </ion-nav-buttons>
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="todo in todos" ui-sref="detail({todo: todo})">
-        {{todo}}
+      <ion-item class="item item-icon-right" ng-repeat="todo in data.data" >
+        <div class="item-checkbox">
+          <label class="checkbox checkbox-balanced checkbox-square">
+            <input type="checkbox" ng-model="todo.completed">
+          </label>
+          {{todo.item}}
+          <i class="icon ion-chevron-left stable"></i>
+        </div>
         <ion-option-button class="button-assertive" ng-click="remove(todo)">
           Remove
         </ion-option-button>
+        <!--<ion-option-button class="button-positive" ui-sref="detail({todo: todo})">-->
+          <!--Edit-->
+        <!--</ion-option-button>-->
       </ion-item>
-
     </ion-list>
+    {{data}}
+
   </ion-content>
 </ion-view>

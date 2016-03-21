@@ -33,7 +33,7 @@ angular.module('AJTodos', ['ionic', 'AJTodos.controllers', 'AJTodos.services'])
       })
 
       .state('listview', {
-        url: '/listview',
+        url: '/listview/:userName',
         controller: 'ListViewController',
         templateUrl: 'views/listview/listview.html',
       })
